@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Example1 from "./components/use-hook-data-fetching/useDataFetching";
+import Example2 from "./components/use-hook-promise/usePromise";
 
 export default function App() {
     const [example, setExample] = useState("");
