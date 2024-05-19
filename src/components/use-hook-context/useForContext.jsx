@@ -9,11 +9,7 @@ const ThemeProvider = ({ children }) => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext value={{ theme, toggleTheme }}>{children}</ThemeContext>;
 };
 
 function ThemeCard() {
@@ -24,7 +20,7 @@ function ThemeCard() {
         className={
           theme === 'light'
             ? 'rounded bg-gray-50 p-8 text-neutral-900 border border-gray-100'
-            : 'rounded bg-gray-800 p-8 text-neutral-300 border border-gray-800'
+            : 'rounded bg-gray-900 p-8 text-neutral-300 border border-gray-900'
         }
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
