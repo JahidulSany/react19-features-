@@ -4,6 +4,7 @@ import Example2 from './components/use-hook-promise/usePromise';
 import Example3 from './components/use-hook-context/useForContext';
 import Example4 from './components/action/formAction';
 import Example5 from './components/useFormStatus/useFormStatus';
+import Example6 from './components/useActionState/useActionState';
 
 export default function App() {
   const [example, setExample] = useState('');
@@ -29,11 +30,11 @@ export default function App() {
   if (example === 'useFormStatus') {
     content = <Example5 />;
   }
-  if (example === 'useFormState') {
+  if (example === 'useActionState') {
     content = (
       <>
-        <Example6 itemID="1" title="Product 1" />
-        <Example6 itemID="2" title="Product 2" />
+        <Example6 itemID="1" itemTitle="Product 1" />
+        <Example6 itemID="2" itemTitle="Product 2" />
       </>
     );
   }
@@ -64,7 +65,7 @@ export default function App() {
           <option value="example-3">&quot;use&quot; Hook with context</option>
           <option value="action">&quot;Form Action&quot;</option>
           <option value="useFormStatus">&quot;useFormStatus&quot;</option>
-          <option value="useFormState">&quot;useFormState&quot;</option>
+          <option value="useActionState">&quot;useActionState&quot;</option>
           <option value="useOptimistic">&quot;useOptimistic&quot;</option>
           <option value="automemo">&quot;Auto Memoization&quot;</option>
           <option value="forwardRef">&quot;forwardRef&quot;</option>
