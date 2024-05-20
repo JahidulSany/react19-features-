@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useFormStatus } from 'react-dom';
 
 // PostItem component
 const PostItem = ({ post }) => {
@@ -9,12 +10,32 @@ const PostItem = ({ post }) => {
     </div>
   );
 };
+
+const Button = () => {
+  const { pending, data } = useFormStatus();
+  return (
+    <>
+      <button
+        disabled={pending}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+        type="submit"
+      >
+        {pending ? 'Submitting...' : 'Submit'}
+      </button>
+      <br />
+      <p>{data ? `Requesting ${data?.get('title')}...` : ''}</p>
+    </>
+  );
+};
+
 // PostForm component
 const PostForm = ({ addPost }) => {
   const formAction = async (formData) => {
     // delay
     await new Promise((resolve) => {
-      setTimeout(resolve, 1000);
+      setTimeout(() => {
+        resolve();
+      }, 1000);
     });
 
     addPost({ title: formData.get('title'), body: formData.get('body') });
@@ -55,14 +76,7 @@ const PostForm = ({ addPost }) => {
           name="body"
         ></textarea>
       </div>
-      <div className="flex items-center justify-between">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
-          type="submit"
-        >
-          Submit
-        </button>
-      </div>
+      <Button />
     </form>
   );
 };
